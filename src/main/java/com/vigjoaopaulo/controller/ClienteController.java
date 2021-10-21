@@ -25,8 +25,11 @@ public class ClienteController {
 
 	
 	@PostMapping("/pessoas")
-	public Pessoas addPessoa(@RequestBody Pessoas pessoa) {		
-		return pessoaRepository.save(pessoa);
+	public String addPessoa(@RequestBody Pessoas pessoa) {		
+		
+		pessoaRepository.save(pessoa);
+		
+		return "Inserido com sucesso id: ";
 	}
 	
 	@GetMapping("/pessoas")
@@ -42,21 +45,25 @@ public class ClienteController {
 	}	
 		
 	@DeleteMapping("/pessoas/{id}")
-	public void deleteCliente(@PathVariable Long id) {
-		pessoaRepository.deleteById(id);		
+	public String deleteCliente(@PathVariable Long id) {
+		pessoaRepository.deleteById(id);
+		
+		return "Deletado com sucesso id: " + id;
 	}
 	
 	
 	@PutMapping("/pessoas/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Pessoas updateCliente(@PathVariable Long id,  @RequestBody Pessoas cliente) {
+	public String updateCliente(@PathVariable Long id,  @RequestBody Pessoas cliente) {
 		
 		Pessoas newObj = pessoaRepository.findById(id).get();
 		
 		newObj.setNome(cliente.getNome());
 		
 		
-		return  pessoaRepository.save(newObj);
+		pessoaRepository.save(newObj);
+		
+		return "Atualizado com sucesso id: " + id;
 	
 	
 	}
