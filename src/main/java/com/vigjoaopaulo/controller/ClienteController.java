@@ -29,7 +29,7 @@ public class ClienteController {
 		
 		pessoaRepository.save(pessoa);
 		
-		return "Inserido com sucesso id: ";
+		return "Inserido com sucesso...";
 	}
 	
 	@GetMapping("/pessoas")
