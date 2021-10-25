@@ -17,7 +17,6 @@ import com.vigjoaopaulo.model.Pessoas;
 import com.vigjoaopaulo.repository.ClienteRepository;
 
 @RestController
-
 public class ClienteController {
 
 	@Autowired
